@@ -1,6 +1,6 @@
-(function(){
+const simpleArr = (function(){
 
-	var arr = [1, 2, 3, 4, 5];
+	var arr = [1, 2, 3, 4, 5, 4, 23, 4, 5, 9, 6];
 	var arrFunc = Array.from(arr); //преобразуем в массив
 
 	
@@ -15,6 +15,25 @@
 
 	var filterArr = arr.filter(e => e > 2); // Фильтруем массив и возвращаем новый массив с элементами больше 2х
 
-	console.log(filterArr);
+	var arrClone = arr.slice();
 
-})();
+	arrClone = arr.sort((a,b) => a - b); // простая сортировака по возрастанию 
+	arrClone = arr.sort((a,b) => b - a); // простая сортировака по убыванию 
+
+	arrClone.sort((a, b) => (a < b && -1) || (a > b && 1) || 0); //по возрастанию ( + проверка типов)
+	arrClone.sort((a, b) => (a < b && 1) || (a > b && -1) || 0); //по убыванию ( + проверка типов)
+
+	console.log(arrClone);
+
+});
+
+
+// Сортировка массива объектов по их свойствам
+
+const compareArrElem = (function(){
+
+	
+});
+
+
+//https://habrahabr.ru/post/279867/
