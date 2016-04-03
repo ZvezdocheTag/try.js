@@ -98,5 +98,40 @@ console.log(r.includes(3));
 console.log(r.toString());
 
 console.log(r instanceof Range);
+});
+
+var constructorDef = (function(){
+
+	var F = function(){};
+	var p = F.prototype; // объект прототип связанный с ней
+	var c = p.constructor; // функция связанная с прототипом
+	console.log(c === F );
+
+	// var n = 3;
+	// n.times(function(n) {console.log(n + " привет"); });
+	// Number.prototype.times = function(f, context) {
+	// 	var n = Number(this);
+	// 	for(var i = 0; i < n; i++) f.call(context, i);
+	
+	// }
+
+
+
+	// Определения класса с помощью конструктора
+
+
+	function typeAndValue(x) {
+		if(x == null) return ""; // значения null undefined не имеют конструктора
+		switch(x.constructor) {
+			case Number: return "Number: " + x;
+			case String: return "String: '" + x + "'";
+			case Date: return "Date: " + x;
+			case RegExp: return "RegExp: " + x;
+			case Complex: return "Complex: " + x;
+		}
+	}
+
+	var res = typeAndValue("Bo ob");
+	console.log(res);
 })();
 
