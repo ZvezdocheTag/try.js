@@ -155,15 +155,26 @@ function makeBuffer() {
 
 	var initStr = "";
 
-	return function addTo(value) {
-
-			if (value === undefined || arguments.length == 0) {
-				return initStr;
-			}
 
 
-			return initStr += value;
+	function addTo(value) {
+
+		if (value === undefined || arguments.length == 0) {
+			return initStr;
 		}
+
+
+		return initStr += value;
+	};
+
+	addTo.clear = function() {
+
+		return initStr = " ";
+	}
+
+	return addTo;
+
+
 	}
 
 var buffer = makeBuffer();
@@ -176,5 +187,28 @@ buffer(' Нужно!');
 // получить текущее значение
 console.log( buffer() );
 
+console.log( buffer.clear() );
+
+console.log( buffer() );
+
+
+// Сортировк 
+
+
+	var users = [{
+	  name: "Вася",
+	  surname: 'Иванов',
+	  age: 20
+	  
+	}, {
+	  name: "Петя",
+	  surname: 'Чапаев',
+	  age: 25
+
+	}, {
+	  name: "Маша",
+	  surname: 'Медведева',
+	  age: 18
+	}];
 
 })();
