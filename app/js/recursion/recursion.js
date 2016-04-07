@@ -45,4 +45,19 @@ console.log(walkByList(list));
 
 
 
+		function counter() {
+			var count = 0;
+
+			return function counterAdd() {
+
+				return count++;
+			}
+		}
+
+		var res = counter();
+
+		console.log( res() );
+		console.log( res() );
+		console.log( res() );
+
 })();
