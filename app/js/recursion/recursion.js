@@ -185,11 +185,11 @@ buffer(' Использовать');
 buffer(' Нужно!');
 
 // получить текущее значение
-console.log( buffer() );
+// console.log( buffer() );
 
-console.log( buffer.clear() );
+// console.log( buffer.clear() );
 
-console.log( buffer() );
+// console.log( buffer() );
 
 
 // Сортировк 
@@ -210,5 +210,110 @@ console.log( buffer() );
 	  surname: 'Медведева',
 	  age: 18
 	}];
+
+
+	function byField(field) {
+
+		return function(a, b) {
+			return a.field > b.field ? 1 : 1;
+		}
+	}
+
+	users.sort(byField('name'));
+
+
+
+
+		users.forEach(function(user) {
+
+		  // alert( user.name );
+
+		}); 
+
+		users.sort(byField('age'));
+
+		users.forEach(function(user) {
+
+		  // alert( user.name );
+
+}); 
+
+// Фильтрация через функцию 
+
+	var arr = [1, 2, 3, 4, 5, 6, 7];
+
+	function filterArray(arr, func) {
+
+		var initNewArr = [];
+
+		for(var i = 0; i < arr.length; i++) {
+
+			var val = arr[i];
+
+			if(func(val)) {
+
+				initNewArr.push(val);
+			}
+		}
+
+
+
+		return initNewArr;
+
+	}	
+
+
+	// console.log(filterArray(arr, function(a){
+
+	// 	return a % 2 == 0;
+	// }));
+
+	function inBetween(a,b) {
+
+		return function(x) {
+			return a <= x && b >= x;
+		} 
+	}
+
+	// console.log(filterArray(arr, inBetween(2,5)));
+
+
+	function inArray(arr) {
+
+		return function(x) {
+			return arr.indexOf(x) != -1;
+		};
+
+	}
+
+	// console.log(arr, inArray([2,3,4]));
+
+
+
+
+function makeArmy() {
+
+  var shooters = [];
+
+  for (var i = 0; i < 10; i++) {
+
+    var shooter = (function(x) {
+
+      return function() {
+        alert( x );
+      };
+
+    })(i);
+
+    shooters.push(shooter);
+  }
+
+  return shooters;
+}
+
+var army = makeArmy();
+
+army[0](); 
+army[5](); 
 
 })();
