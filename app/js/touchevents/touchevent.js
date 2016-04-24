@@ -30,4 +30,56 @@ box1.addEventListener('touchend', function (e) {
 
 
 })
+});
+
+(function(){
+
+	var touchFunc = {
+// выводим элемент по которому происходит касание
+	anyElem: document.body.addEventListener('touchstart', function(e){
+				var touchobj = e.changedTouches[0];
+
+				console.log(this.tagName);
+				console.log(touchobj.target);
+			}, false)
+	}
+
+
+
+
+
+});
+
+(function(){
+
+	window.addEventListener('load', function(){
+
+		var box2 = document.getElementById("box2");
+		var boxleft;
+		var startx;
+		var dist = 0;
+		var touchobj = null;
+
+
+		box2.addEventListener('touchstart', function(e){
+
+			touchobj = e.changedTouches[0];
+			boxleft = parseInt(box2.style.left);
+			startx = parseInt(touchobj.clientX);
+
+			e.preventDefault();
+
+		}, false)
+
+		box2.addEventListener('touchmove', function(e){
+
+			touchobj = e.changedTouches[0];
+			var dist = parseInt(touchobj.clientX) - startx;
+
+			box2.style.left =  (( boxleft + dist > 450)
+								 ? 450 : (boxleft + dist < 0)
+								  ?  0 : boxleft + dist) + 'px';
+			e.preventDefault();
+		}, false)
+	}, false)
 })();
