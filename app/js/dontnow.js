@@ -29,4 +29,25 @@
 	console.log(strResult);
 
 
+});
+
+(function(){
+
+
+
 })();
+
+	var user = {
+		name: "dadada",
+		sayHi: function(){
+
+			alert(this.name);
+
+		}
+	};
+
+	(function(user){
+
+		var f = user.sayHi;
+		setTimeout(f.bind(user), 1000);
+	})(user);
