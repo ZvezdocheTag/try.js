@@ -22,7 +22,7 @@ var statusObj = {
 
 var status = App.prototype.getString.apply(statusObj);
 
-console.log(status);
+// console.log(status);
 
 // фннкция добавляющая данные
 
@@ -40,7 +40,7 @@ var sum = function(){
 }
 
 
-console.log(sum(4,3,1,3,12,21,21));
+// console.log(sum(4,3,1,3,12,21,21));
 
 var add = function(a, b){
 
@@ -72,17 +72,40 @@ var try_it = function() {
 }
 
 try_it();
-console.log(add("fas",4));
+// console.log(add("fas",4));
+
+
+var myObj = (function(){
+	var value = 0;
+
+	return {
+		increment: function (inc) {
+			value += typeof inc === 'number' ? inc : 1;
+		},
+		gerValue: function () {
+			return value;
+		}
+	}
+})();
+
+// console.log(myObj.increment(3));
+// console.log(myObj.gerValue());
 
 
 
 
 
+var quo = function(status) {
+	return {
+		get_status: function( ) {
+			return status;
+		}
+	};
+};
 
 
-
-
-
+var myQuo = quo("namaste");
+document.writeln(myQuo.get_status());
 
 
 
