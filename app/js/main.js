@@ -42,15 +42,41 @@
 // admin.password();
 
 
+
+
 var WEEKDAYS = ['пн', 'вт', "ср", "чт", "пт", "сб", "вс"];
 
 function countDays(arr) {
-
 	return WEEKDAYS[arr];
-
 }
 
-	for(var i = 0; i <= 7; i++) {
-
-		console.log(countDays(i));
+// Декоратор 
+function wrapperDecorator(f, before, after) {
+	return function() {
+		return before + f.apply(this, arguments) + after; // универстальный метод обертки 
 	}
+}
+
+var getDayInDiv = wrapperDecorator(countDays, '<div>', '</div>');
+
+for(var i = 0; i <= 7; i++) {
+	console.log(getDayInDiv(i));
+}
+
+
+
+
+function anotherDecorator(f) {
+
+	return function() {
+		return 2*f.apply(this, arguments);
+	}
+}
+
+function multiply(a, b) {
+	return a + b;
+}
+
+
+var multyResult = anotherDecorator(multiply);
+console.log(multyResult(20,30));
